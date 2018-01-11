@@ -1,0 +1,40 @@
+{
+  "name": "dedux-agent",
+  "version": "0.0.3",
+  "description": "a smart agent framework/library for building js sdk using HTTP, WebSocket and custom RPC protocols in nodejs and browser",
+  "repository": "https://github.com/25mi/dedux-agent",
+  "license": "UNLICENSED",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src test",
+    "dev": "gulp --gulpfile build/tasks.js watch",
+    "build": "gulp --gulpfile build/tasks.js build",
+    "test": "mode=dev mocha --recursive --watch --timeout 10000",
+    "dist": "./node_modules/.bin/babel src -d dist -s --copy-files"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "isocall": "latest",
+    "json-stringify-safe": "^5.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.1.1",
+    "eslint": "^4.5.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "gulp": "^3.9.1",
+    "jsonfile": "^3.0.1",
+    "mocha": "^3.5.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  }
+}

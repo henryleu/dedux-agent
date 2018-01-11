@@ -1,0 +1,353 @@
+{
+    "portal": {
+        "name": "portal",
+        "groups": [
+            {
+                "name": "user",
+                "methods": [
+                    {
+                        "name": "loadUserById",
+                        "auth": true
+                    }
+                ]
+            },
+            {
+                "name": "school",
+                "methods": [
+                    {
+                        "name": "create",
+                        "auth": false
+                    },
+                    {
+                        "name": "querySchools",
+                        "auth": true
+                    }
+                ]
+            },
+            {
+                "name": "district",
+                "methods": [
+                    {
+                        "name": "getDistrictById",
+                        "auth": false
+                    },
+                    {
+                        "name": "queryDistricts",
+                        "auth": false
+                    },
+                    {
+                        "name": "fetchByDisplayName",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "system",
+                "methods": [
+                    {
+                        "name": "loginAnonymously",
+                        "auth": false
+                    },
+                    {
+                        "name": "registerAndLogin",
+                        "auth": false
+                    },
+                    {
+                        "name": "loginWithPassword",
+                        "auth": false
+                    },
+                    {
+                        "name": "loginWithTvcode",
+                        "auth": false
+                    },
+                    {
+                        "name": "changePassword",
+                        "auth": true
+                    },
+                    {
+                        "name": "resetPassword",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "tvcode",
+                "methods": [
+                    {
+                        "name": "requestTvcode",
+                        "auth": false
+                    },
+                    {
+                        "name": "verifyTvcode",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "field",
+                "methods": [
+                    {
+                        "name": "create",
+                        "auth": false
+                    },
+                    {
+                        "name": "update",
+                        "auth": false
+                    },
+                    {
+                        "name": "addToSet",
+                        "auth": false
+                    },
+                    {
+                        "name": "addAliases",
+                        "auth": false
+                    },
+                    {
+                        "name": "queryFields",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "enrollBatch",
+                "methods": [
+                    {
+                        "name": "create",
+                        "auth": false
+                    },
+                    {
+                        "name": "addToSet",
+                        "auth": false
+                    },
+                    {
+                        "name": "queryEnrollBatchs",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "enrollment",
+                "methods": [
+                    {
+                        "name": "create",
+                        "auth": true
+                    },
+                    {
+                        "name": "getValidOne",
+                        "auth": true
+                    },
+                    {
+                        "name": "submit",
+                        "auth": true
+                    },
+                    {
+                        "name": "getStandardOne",
+                        "auth": true
+                    },
+                    {
+                        "name": "getTakenTopTen",
+                        "auth": true
+                    },
+                    {
+                        "name": "getTakenRank",
+                        "auth": true
+                    },
+                    {
+                        "name": "invalidateByUserId",
+                        "auth": true
+                    },
+                    {
+                        "name": "queryEnrollments",
+                        "auth": true
+                    }
+                ]
+            }
+        ]
+    },
+    "booker": {
+        "name": "booker",
+        "groups": [
+            {
+                "name": "user",
+                "methods": [
+                    {
+                        "name": "loadUserById",
+                        "auth": true
+                    }
+                ]
+            },
+            {
+                "name": "system",
+                "methods": [
+                    {
+                        "name": "registerAndLogin",
+                        "auth": false
+                    },
+                    {
+                        "name": "loginWithPassword",
+                        "auth": false
+                    },
+                    {
+                        "name": "loginWithTvcode",
+                        "auth": false
+                    },
+                    {
+                        "name": "changePassword",
+                        "auth": true
+                    },
+                    {
+                        "name": "resetPassword",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "tvcode",
+                "methods": [
+                    {
+                        "name": "requestTvcode",
+                        "auth": false
+                    },
+                    {
+                        "name": "verifyTvcode",
+                        "auth": false
+                    }
+                ]
+            }
+        ]
+    },
+    "boss": {
+        "name": "boss",
+        "groups": [
+            {
+                "name": "user",
+                "methods": [
+                    {
+                        "name": "queryUsers",
+                        "auth": true
+                    }
+                ]
+            },
+            {
+                "name": "school",
+                "methods": [
+                    {
+                        "name": "querySchools",
+                        "auth": true
+                    }
+                ]
+            },
+            {
+                "name": "district",
+                "methods": [
+                    {
+                        "name": "getDistrictById",
+                        "auth": false
+                    },
+                    {
+                        "name": "queryDistricts",
+                        "auth": false
+                    },
+                    {
+                        "name": "fetchByDisplayName",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "system",
+                "methods": [
+                    {
+                        "name": "loginAsBossUser",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "field",
+                "methods": [
+                    {
+                        "name": "create",
+                        "auth": false
+                    },
+                    {
+                        "name": "update",
+                        "auth": false
+                    },
+                    {
+                        "name": "addToSet",
+                        "auth": false
+                    },
+                    {
+                        "name": "addAliases",
+                        "auth": false
+                    },
+                    {
+                        "name": "queryFields",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "fieldScheme",
+                "methods": [
+                    {
+                        "name": "create",
+                        "auth": true
+                    },
+                    {
+                        "name": "update",
+                        "auth": true
+                    },
+                    {
+                        "name": "queryPraSchemes",
+                        "auth": true
+                    },
+                    {
+                        "name": "querySchemes",
+                        "auth": true
+                    },
+                    {
+                        "name": "praSchemeSelectDistrict",
+                        "auth": true
+                    }
+                ]
+            },
+            {
+                "name": "fieldToScheme",
+                "methods": [
+                    {
+                        "name": "updateFieldToScheme",
+                        "auth": true
+                    }
+                ]
+            },
+            {
+                "name": "enrollBatch",
+                "methods": [
+                    {
+                        "name": "create",
+                        "auth": false
+                    },
+                    {
+                        "name": "addToSet",
+                        "auth": false
+                    },
+                    {
+                        "name": "queryEnrollBatchs",
+                        "auth": false
+                    }
+                ]
+            },
+            {
+                "name": "enrollment",
+                "methods": [
+                    {
+                        "name": "queryEnrollments",
+                        "auth": true
+                    }
+                ]
+            }
+        ]
+    }
+}
