@@ -8,11 +8,11 @@
 const HttpClientBuilder = require('../../src/http/builder');
 const BasicConfigurator = require('../../src/http/configurators/basic');
 const EnvConfigurator = require('../../src/http/configurators/env');
-const AgentConfigurator = require('../../src/http/configurators/agent');
+const AgentConfigurator = require('../../src/http/configurators/node');
 
 class Agent {
     constructor (context, state) {
-        this.context = context;
+        this.options = context;
         this.state = state;
         this.httpClient = null;
     }
@@ -25,7 +25,7 @@ class Agent {
 
 class Builder {
     constructor () {
-        this.context = {};
+        this.options = {};
         this.state = {};
         this.options = [];
         this.optionMap = {};
@@ -43,13 +43,13 @@ class Builder {
         this.options.push(option);
         this.optionMap[option.name] = option;
         if (option.hasDefault) {
-            this.context[option.name] = option.defaultValue;
+            this.options[option.name] = option.defaultValue;
         }
     }
 
     _validateOptions () {
         for (let option of this.options) {
-            let result = option.valid(this.context[option.name]);
+            let result = option.valid(this.options[option.name]);
             if (result) throw new Error(result);
         }
     }
@@ -73,7 +73,7 @@ class Builder {
                 throw new Error(`agent doesn't support the option ${name}`);
             }
 
-            this.context[option.name] = value;
+            this.options[option.name] = value;
             return this;
         } else if (typeof name === 'object' && typeof value === 'undefined') {
             let config = name;
@@ -90,10 +90,10 @@ class Builder {
 
     build () {
         this._validateOptions();
-        this.httpClientBuilder.setContext(this.context);
+        this.httpClientBuilder.setOptions(this.options);
         const httpClient = this.httpClientBuilder.build();
 
-        const agent = new Agent(this.context, this.state);
+        const agent = new Agent(this.options, this.state);
         agent.setHttpClient(httpClient);
 
         console.log(agent);
@@ -172,10 +172,10 @@ class DefaultBuilder extends Builder {
         const output = require('../../src/http/interceptors/output')();
         this._addResponseInterceptor(output.interceptor, output.errInterceptor);
 
-        const debugReq = require('../../src/http/interceptors/debug').request(this.context);
+        const debugReq = require('../../src/http/interceptors/debug').request(this.options);
         this._addRequestInterceptor(debugReq.interceptor, debugReq.errInterceptor);
 
-        const debugRes = require('../../src/http/interceptors/debug').response(this.context);
+        const debugRes = require('../../src/http/interceptors/debug').response(this.options);
         this._addResponseInterceptor(debugRes.interceptor, debugRes.errInterceptor);
 
         const tokenInterceptor = require('../../src/http/interceptors/token')(this.state);

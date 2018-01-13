@@ -4,13 +4,13 @@
 const axios = require('axios');
 
 class HttpClient {
-    constructor (context, configurators) {
-        this.context = context;
+    constructor (options, configurators) {
+        this.options = options;
         this.config = {};
         this.configurators = configurators;
 
         for (let c of this.configurators) {
-            c.config(this.context, this.config);
+            c.config(this.options, this.config);
         }
 
         this.fetch = axios.create(this.config);
@@ -35,4 +35,5 @@ class HttpClient {
         return this.fetch.request(cfg);
     }
 }
+
 module.exports = HttpClient;

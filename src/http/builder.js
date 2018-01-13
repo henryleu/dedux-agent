@@ -5,14 +5,14 @@ const HttpClient = require('./client');
 
 class Builder {
     constructor () {
-        this.context = {};
+        this.options = {};
         this.configurators = [];
         this.request = [];
         this.response = [];
     }
 
-    setContext (ctx) {
-        this.context = ctx;
+    setOptions (options) {
+        this.options = options;
         return this;
     }
 
@@ -23,14 +23,16 @@ class Builder {
 
     addRequestInterceptor (...args) {
         this.request.push(args);
+        return this;
     }
 
     addResponseInterceptor (...args) {
         this.response.push(args);
+        return this;
     }
 
     build () {
-        const client = new HttpClient(this.context, this.configurators);
+        const client = new HttpClient(this.options, this.configurators);
         for (let args of this.request) {
             client.addRequestInterceptor.apply(client, args);
         }

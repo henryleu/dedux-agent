@@ -3,7 +3,7 @@
  */
 const Configurator = require('./config');
 
-class AgentConfigurator extends Configurator {
+class NodeConfigurator extends Configurator {
     config (context, config) {
         if (context.isNode) {
             if (context.secured) {
@@ -21,4 +21,4 @@ class AgentConfigurator extends Configurator {
     }
 }
 
-module.exports = AgentConfigurator;
+module.exports = NodeConfigurator;

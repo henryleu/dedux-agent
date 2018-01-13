@@ -22,6 +22,19 @@ Group.prototype = {
         this._methodHash[name] = method;
         this[name] = method;
         return this;
+    },
+
+    mixinGroups: function (target) {
+        for (let name of this._groupHash) {
+            target[name] = this._groupHash;
+        }
+    },
+
+    tearDown: function () {
+        this._groupList = null;
+        this._groupHash = null;
+        this._methodList = null;
+        this._methodHash = null;
     }
 }
 
