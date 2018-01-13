@@ -9,10 +9,10 @@ class EnvConfigurator extends Configurator {
         this.settings = settings;
     }
 
-    config (context, config) {
-        const appName = context.appName;
-        const env = context.env;
-        const baseURL = context.protocol + '//' + this.settings.baseUrls[appName][env];
+    config (options, config) {
+        const appName = options.appName;
+        const env = options.env;
+        const baseURL = options.protocol + '//' + this.settings.baseUrls[appName][env];
         return Object.assign(config, {baseURL});
     }
 }

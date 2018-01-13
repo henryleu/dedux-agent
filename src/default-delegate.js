@@ -32,6 +32,10 @@ class Delegate {
         const nodeConfigurator = new NodeConfigurator();
         httpClientBuilder.addConfigurator(nodeConfigurator);
 
+        const TimeoutConfigurator = configurators.timeout;
+        const timeoutConfigurator = new TimeoutConfigurator();
+        httpClientBuilder.addConfigurator(timeoutConfigurator);
+
         /*
          * setup interceptors
          */

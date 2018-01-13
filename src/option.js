@@ -27,7 +27,14 @@ class Option {
         if (!Number.isInteger(defaultValue)) throw new Error(`defaultValue ${defaultValue} should be an integer`);
         if (!Number.isInteger(from)) throw new Error(`from ${from} should be an integer`);
         if (!Number.isInteger(to)) throw new Error(`to ${to} should be an integer`);
-        const validate = (v) => Number.isInteger(v) ? '' : `${name} should be integer between ${from} and ${to}`;
+        if (from >= to) throw new Error(`from ${from} should be less than to ${to}`);
+        if (defaultValue < from || defaultValue > to) throw new Error(`defaultValue ${defaultValue} should be between ${from} and ${to}`);
+
+        const validate = (v) => {
+            const error = `${name} ${v} should be an integer between ${from} and ${to}`;
+            if (!Number.isInteger(v) || v < from || v > to) return error;
+            return '';
+        }
         return new Option({
             name,
             hasDefault: true,

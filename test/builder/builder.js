@@ -10,6 +10,7 @@ const builder = new DefaultBuilder(settings, metadata);
 const portal = builder
     .set('env', 'dev')
     .set('debug', true)
+    .set('timeout', 3000)
     .build();
 
 console.log(portal.getOptions());

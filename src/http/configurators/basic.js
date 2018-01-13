@@ -3,6 +3,7 @@
  */
 const Configurator = require('./config');
 const p = require('../../protocol');
+const { hdApp } = require('../../keys');
 
 class BasicConfigurator extends Configurator {
     constructor (settings) {
@@ -10,11 +11,14 @@ class BasicConfigurator extends Configurator {
         this.settings = settings;
     }
 
-    config (context, config) {
-        context.appGroup = this.settings.appGroup;
-        context.protocol = context.protocol || p.getProtocol();
-        typeof context.secured === 'undefined' && (context.secured = p.isSecured());
-        typeof context.isNode === 'undefined' && (context.isNode = p.isInNode());
+    config (options, config) {
+        options.appGroup = this.settings.appGroup;
+        options.protocol = options.protocol || p.getProtocol();
+        typeof options.secured === 'undefined' && (options.secured = p.isSecured());
+        typeof options.isNode === 'undefined' && (options.isNode = p.isInNode());
+
+        // set app info header
+        config.headers[hdApp] = options.appGroup + '/' + options.appName;
         return config;
     }
 }

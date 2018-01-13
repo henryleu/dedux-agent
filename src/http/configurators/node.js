@@ -4,9 +4,9 @@
 const Configurator = require('./config');
 
 class NodeConfigurator extends Configurator {
-    config (context, config) {
-        if (context.isNode) {
-            if (context.secured) {
+    config (options, config) {
+        if (options.isNode) {
+            if (options.secured) {
                 const https = require('https');
                 const httpsAgent = new https.Agent({keepAlive: true, rejectUnauthorized: false});
                 Object.assign(config, {httpsAgent});

@@ -1,14 +1,11 @@
 /**
  * Created by henryleu on 26/12/2017.
  */
-const { xAuth } = require('../../keys');
+const { hdAuth, LoginToken } = require('../../keys');
 
 const tokenInterceptor = (state) => (config) => {
-    const token = state['loginToken'];
-    if (token) {
-        !config.headers && (config.headers = {});
-        config.headers[xAuth] = 'Bearer ' + token;
-    }
+    const token = state[LoginToken];
+    token && (config.headers[hdAuth] = 'Bearer ' + token);
     return config;
 };
 

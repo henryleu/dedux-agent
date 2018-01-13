@@ -6,7 +6,9 @@ const axios = require('axios');
 class HttpClient {
     constructor (options, configurators) {
         this.options = options;
-        this.config = {};
+        this.config = {
+            headers: {}
+        };
         this.configurators = configurators;
 
         for (let c of this.configurators) {
