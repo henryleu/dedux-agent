@@ -1,0 +1,16 @@
+{
+    "portal": {
+        "name": "portal",
+        "groups": [
+            {
+                "name": "agent",
+                "methods": [
+                    {
+                        "name": "getMetadata",
+                        "auth": false
+                    }
+                ]
+            }
+        ]
+    }
+}
