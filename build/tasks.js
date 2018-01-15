@@ -5,7 +5,7 @@ const path = require('path');
 const gulp = require('gulp');
 const jsonFile = require('jsonfile');
 const getMetadata = require('./getMetadata');
-const metadataPath = path.join(__dirname, '../src/metadata/metadata.json');
+const metadataPath = path.join(__dirname, '../test/metadata/metadata.json');
 const metadataDistPath = path.join(__dirname, '../dist/metadata/');
 
 const writeJson = function (filePath) {
