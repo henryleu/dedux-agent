@@ -4,15 +4,15 @@
 const Configurator = require('./config');
 
 class EnvConfigurator extends Configurator {
-    constructor (settings) {
+    constructor (baseUrls) {
         super();
-        this.settings = settings;
+        this.baseUrls = baseUrls;
     }
 
     config (options, config) {
         const appName = options.appName;
         const env = options.env;
-        const baseURL = options.protocol + '//' + this.settings.baseUrls[appName][env];
+        const baseURL = options.protocol + '//' + this.baseUrls[appName][env];
         return Object.assign(config, {baseURL});
     }
 }

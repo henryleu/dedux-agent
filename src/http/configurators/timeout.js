@@ -4,11 +4,6 @@
 const Configurator = require('./config');
 
 class TimeoutConfigurator extends Configurator {
-    constructor (settings) {
-        super();
-        this.settings = settings;
-    }
-
     config (options, config) {
         config.timeout = options.timeout;
         return config;

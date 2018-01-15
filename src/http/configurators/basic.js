@@ -3,22 +3,22 @@
  */
 const Configurator = require('./config');
 const p = require('../../protocol');
-const { hdApp } = require('../../keys');
 
 class BasicConfigurator extends Configurator {
-    constructor (settings) {
+    constructor (appGroup, hdApp) {
         super();
-        this.settings = settings;
+        this.appGroup = appGroup;
+        this.hdApp = hdApp;
     }
 
     config (options, config) {
-        options.appGroup = this.settings.appGroup;
+        options.appGroup = this.appGroup;
         options.protocol = options.protocol || p.getProtocol();
         typeof options.secured === 'undefined' && (options.secured = p.isSecured());
         typeof options.isNode === 'undefined' && (options.isNode = p.isInNode());
 
         // set app info header
-        config.headers[hdApp] = options.appGroup + '/' + options.appName;
+        config.headers[this.hdApp] = options.appGroup + '/' + options.appName;
         return config;
     }
 }

@@ -19,6 +19,10 @@
                         "auth": false
                     },
                     {
+                        "name": "findById",
+                        "auth": true
+                    },
+                    {
                         "name": "querySchools",
                         "auth": true
                     }
@@ -231,6 +235,10 @@
             {
                 "name": "school",
                 "methods": [
+                    {
+                        "name": "findById",
+                        "auth": true
+                    },
                     {
                         "name": "querySchools",
                         "auth": true

@@ -5,8 +5,9 @@
 const HttpClientBuilder = require('./http/builder');
 const interceptors = require('./http/interceptors');
 const configurators = require('./http/configurators');
-const Group = require('./group');
 const { InvalidLogin, WithoutLoginToken } = require('isocall').outputs;
+const { LoginToken } = require('./keys');
+const Group = require('./group');
 
 class Delegate {
     constructor (settings, metadata) {
@@ -15,17 +16,20 @@ class Delegate {
     }
 
     _buildHttpClient (options, state) {
-        let httpClientBuilder = new HttpClientBuilder();
+        const httpClientBuilder = new HttpClientBuilder();
+        const headers = this.settings.headers;
+        const appGroup = this.settings.appGroup;
+        const baseUrls = this.settings.baseUrls;
 
         /*
          * setup configurators
          */
         const BasicConfigurator = configurators.basic;
-        const basicConfigurator = new BasicConfigurator(this.settings);
+        const basicConfigurator = new BasicConfigurator(appGroup, headers.Application);
         httpClientBuilder.addConfigurator(basicConfigurator);
 
         const EnvConfigurator = configurators.env;
-        const envConfigurator = new EnvConfigurator(this.settings);
+        const envConfigurator = new EnvConfigurator(baseUrls);
         httpClientBuilder.addConfigurator(envConfigurator);
 
         const NodeConfigurator = configurators.node;
@@ -48,7 +52,7 @@ class Delegate {
         const debugRes = interceptors.debug.response(options);
         httpClientBuilder.addResponseInterceptor(debugRes.interceptor, debugRes.errInterceptor);
 
-        const tokenInterceptor = interceptors.token(state);
+        const tokenInterceptor = interceptors.token(state, headers.Authorization);
         httpClientBuilder.addRequestInterceptor(tokenInterceptor);
 
         httpClientBuilder.setOptions(options);
@@ -61,7 +65,7 @@ class Delegate {
         const sdk = {};
 
         const getMethod = (httpClient, state, {url, meta}) => function () {
-            if (meta.auth && !state.loginToken) {
+            if (meta.auth && !state[LoginToken]) {
                 return Promise.resolve(InvalidLogin.clone().sub(WithoutLoginToken.clone()));
             }
             const args = Array.prototype.slice.call(arguments);

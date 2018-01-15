@@ -3,7 +3,7 @@
  */
 const jsonFile = require('jsonfile');
 
-module.exports = function (filePath) {
+const writeJson = function (filePath) {
     return function (json) {
         return new Promise(function (resolve, reject) {
             jsonFile.writeFile(filePath, json, {spaces: 4}, function (err) {
@@ -13,3 +13,5 @@ module.exports = function (filePath) {
         });
     };
 };
+
+module.exports = { writeJson };

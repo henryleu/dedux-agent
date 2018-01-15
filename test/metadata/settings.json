@@ -1,5 +1,12 @@
 {
     "appGroup": "ddd",
+    "headers": {
+        "Authorization":    "Authorization",
+        "Application":      "x-ddd-app",
+        "Signature":        "x-sig",
+        "Timestamp":        "x-ts",
+        "Nonce":            "x-nonce"
+    },
     "baseUrls": {
         "portal": {
             "prd": "www.tjyeybm.com/api",
