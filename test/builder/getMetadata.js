@@ -4,7 +4,7 @@
 // const getMetadata = require('../../build/getMetadata');
 //
 // getMetadata().then((metadata) => console.log(JSON.stringify(metadata, null, 4)));
-const DefaultBuilder = require('../../src').DefaultBuilder;
+const DefaultBuilder = require('../../dist').DefaultBuilder;
 const settings = require('../metadata/settings');
 const metadata = require('../metadata/boot-metadata');
 const helper = require('../../src').helper;
