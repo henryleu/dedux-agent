@@ -4,7 +4,7 @@
 const DefaultBuilder = require('../dist/index').DefaultBuilder;
 const settings = require('./metadata/settings');
 const metadata = require('./metadata/pull');
-const helper = require('../src/index').helper;
+const helper = require('./helper');
 const path = require('path');
 const writeJson = helper.writeJson(path.join(__dirname, './metadata/metadata.json'));
 const builder = new DefaultBuilder(settings, metadata);

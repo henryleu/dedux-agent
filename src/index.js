@@ -1,8 +1,7 @@
-const helper = require('./helper');
 const DefaultBuilder = require('./default-builder');
 const DefaultDelegate = require('./default-delegate');
 const DefaultAgent = require('./default-agent');
-const _exports = { helper, DefaultBuilder, DefaultDelegate, DefaultAgent };
+const _exports = { DefaultBuilder, DefaultDelegate, DefaultAgent };
 
 const option = require('./option');
 Object.assign(_exports, option);
