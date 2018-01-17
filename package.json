@@ -6,7 +6,6 @@
   "license": "UNLICENSED",
   "scripts": {
     "lint": "./node_modules/.bin/eslint src test",
-    "build": "gulp --gulpfile build/tasks.js build",
     "test": "mode=dev mocha --recursive --watch --timeout 10000",
     "dist": "./node_modules/.bin/babel src -d dist -s --copy-files"
   },

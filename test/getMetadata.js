@@ -4,13 +4,12 @@
 // const getMetadata = require('../../build/getMetadata');
 //
 // getMetadata().then((metadata) => console.log(JSON.stringify(metadata, null, 4)));
-const DefaultBuilder = require('../../dist').DefaultBuilder;
-const settings = require('../metadata/settings');
-const metadata = require('../metadata/boot-metadata');
-const helper = require('../../src').helper;
+const DefaultBuilder = require('../dist/index').DefaultBuilder;
+const settings = require('./metadata/settings');
+const metadata = require('./metadata/pull');
+const helper = require('../src/index').helper;
 const path = require('path');
-const writeJson = helper.writeJson(path.join(__dirname, '../metadata/metadata.json'));
-
+const writeJson = helper.writeJson(path.join(__dirname, './metadata/metadata.json'));
 const builder = new DefaultBuilder(settings, metadata);
 const portal = builder
     .set('env', 'dev')

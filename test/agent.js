@@ -1,6 +1,6 @@
-const DefaultBuilder = require('../../dist').DefaultBuilder;
-const settings = require('../metadata/settings');
-const metadata = require('../metadata/metadata');
+const DefaultBuilder = require('../dist/index').DefaultBuilder;
+const settings = require('./metadata/settings');
+const metadata = require('./metadata/metadata');
 const builder = new DefaultBuilder(settings, metadata);
 
 // module.exports = builder
