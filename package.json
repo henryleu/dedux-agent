@@ -1,6 +1,6 @@
 {
   "name": "dedux-agent",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a smart agent framework/library for building js sdk using HTTP, WebSocket and custom RPC protocols in nodejs and browser",
   "repository": "https://github.com/25mi/dedux-agent",
   "license": "UNLICENSED",
@@ -25,7 +25,6 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "gulp": "^3.9.1",
     "mocha": "^3.5.0"
   },
   "babel": {
